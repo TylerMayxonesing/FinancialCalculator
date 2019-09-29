@@ -15,7 +15,7 @@ std::string prompt(char input) {
 
 int monthlyLoan() {
   float principle;
-  int term;
+  float term;
   float rates;
   float payment;
 
@@ -30,8 +30,7 @@ int monthlyLoan() {
 
   payment = (principle*(rates/12)*pow((1+(rates/12)),(12*term)))/(pow((1+(rates/12)),(12*term))-1);
 
-  std::cout << "Your monthly payment is " << ("%.2f",payment) << std::endl;
-  //std::setprecision(2)
+  std::cout << "Your monthly payment is " <<std::fixed<< std::setprecision(2)<<(payment) << std::endl;
 
   return 0;
 }
