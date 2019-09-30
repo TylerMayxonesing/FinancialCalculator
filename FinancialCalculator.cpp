@@ -13,17 +13,17 @@ void prompt() {
     std::cout << "Enter what you want to calculate: ";
     std::cin >> input;
   }
-  while (tolower(input) != 'm' && tolower(input) != 'i' && tolower(input) != 'r' && tolower(input) != 'y');
-  if (input == 'm'){
+  while (input != 'M' && input != 'I' && input != 'R' && input != 'Y');
+  if (input == 'M'){
     monthlyLoan();
   }
-  else if (tolower(input) == 'i'){
+  else if (input == 'I'){
     inflationCalculator();
   }
-  else if (tolower(input) == 'r'){
+  else if (input == 'R'){
     realInterestRate();
   }
-  else if (tolower(input) == 'y'){
+  else if (input == 'Y'){
     yearToSavingsGoal();
   }
 }
@@ -75,7 +75,7 @@ int inflationCalculator() {
 
   equivalence = amount*pow((1 + inflation),time);
 
-  std::cout << "$" << amount << " in "<< year << " has the same value as " << "$" << equivalence << " in " <<endingYear << ".";
+  std::cout << "$" << amount << " in "<< year << " has the same value as " << "$" << equivalence << " in " <<endingYear << "." << std::endl;
 }
 int realInterestRate() {
   float nominalInterest;
@@ -90,7 +90,7 @@ int realInterestRate() {
 
   realInterest = ((1+nominalInterest)/(1+inflation)) -1;
 
-  std::cout << "The real interest rate is " << std::fixed << std::setprecision(2) << realInterest << ".";
+  std::cout << "The real interest rate is " << std::fixed << std::setprecision(2) << realInterest << "." << std::endl;
 }
 int yearToSavingsGoal() {
   double goal;
@@ -111,8 +111,9 @@ int yearToSavingsGoal() {
   std::cout << "Enter annual interest rate: ";
   std::cin >> interest;
 
-  years = log((((goal-current)/contribution)*(interest/12)+1))/(log(1+(interest/12)));
+  years = log((interest/12)*((((goal-current)/contribution)))+1)/(log(1+(interest/12)));
 
-  std::cout << "The savings goal of " << goal << " will be reached in " << years <<".";
+  std::cout << "The savings goal of " << goal << " will be reached in " << years <<"." << std::endl;
 }
+
 

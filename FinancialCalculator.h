@@ -20,5 +20,4 @@ int realInterestRate();
 
 int yearToSavingsGoal();
 
-std::string lower(std::string);
 #endif //FINANCIALCALCULATOR__FINANCIALCALCULATOR_H_
