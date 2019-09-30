@@ -1,7 +1,8 @@
 #include <iostream>
 #include "FinancialCalculator.h"
 int main() {
-  std::cout << "Hello, World!" << std::endl;
-  monthlyLoan();
+  prompt();
+
+
   return 0;
 }

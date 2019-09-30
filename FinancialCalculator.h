@@ -8,8 +8,17 @@
 #include <string>
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 
-std::string prompt(std::string);
+void prompt();
 
-int monthlyLoan ();
+int monthlyLoan();
+
+int inflationCalculator();
+
+int realInterestRate();
+
+int yearToSavingsGoal();
+
+std::string lower(std::string);
 #endif //FINANCIALCALCULATOR__FINANCIALCALCULATOR_H_

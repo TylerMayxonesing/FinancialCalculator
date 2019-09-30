@@ -2,15 +2,30 @@
 // Created by T Alpha 1 on 9/29/2019.
 //
 
-#include <iomanip>
 #include "FinancialCalculator.h"
 
-std::string prompt(char input) {
-  std::cout << "$ ./FinanceCalculator\n"
-               "(M)onthly loan payment, (I)nflation calculator,\n"
-               "(R)eal interest rate, (Y)ears to savings goal\n"
-               "Enter what you want to calculate:";
-  char choice = tolower(input);
+void prompt() {
+  char input;
+  //char choice = tolower(input);
+  do {
+    std::cout << "$ ./FinanceCalculator\n(M)onthly loan payment,(I)nflation calculator, " << std::endl;
+    std::cout << "(R)eal interest rate, (Y)ears to savings goal" << std::endl;
+    std::cout << "Enter what you want to calculate: ";
+    std::cin >> input;
+  }
+  while (tolower(input) != 'm' && tolower(input) != 'i' && tolower(input) != 'r' && tolower(input) != 'y');
+  if (input == 'm'){
+    monthlyLoan();
+  }
+  else if (tolower(input) == 'i'){
+    inflationCalculator();
+  }
+  else if (tolower(input) == 'r'){
+    realInterestRate();
+  }
+  else if (tolower(input) == 'y'){
+    yearToSavingsGoal();
+  }
 }
 
 int monthlyLoan() {
@@ -34,3 +49,70 @@ int monthlyLoan() {
 
   return 0;
 }
+int inflationCalculator() {
+  float year;
+  float amount;
+  float endingYear;
+  float inflation;
+  float equivalence;
+  float time;
+
+  std::cout << "Enter the starting year: ";
+  std::cin >> year;
+
+
+
+  std::cout<<"Enter the amount of 1969 dollars: ";
+  std::cin >> amount;
+
+  std::cout<<"Enter the ending year: ";
+  std::cin >> endingYear;
+
+  time = endingYear-year;
+
+  std::cout<<"Enter the inflation rate: ";
+  std::cin >> inflation;
+
+  equivalence = amount*pow((1 + inflation),time);
+
+  std::cout << "$" << amount << " in "<< year << " has the same value as " << "$" << equivalence << " in " <<endingYear << ".";
+}
+int realInterestRate() {
+  float nominalInterest;
+  float inflation;
+  float realInterest;
+
+  std::cout << "Enter the nominal interest rate: ";
+  std::cin >> nominalInterest;
+
+  std::cout << "Enter the inflation rate: ";
+  std::cin >> inflation;
+
+  realInterest = ((1+nominalInterest)/(1+inflation)) -1;
+
+  std::cout << "The real interest rate is " << std::fixed << std::setprecision(2) << realInterest << ".";
+}
+int yearToSavingsGoal() {
+  double goal;
+  double current;
+  double contribution;
+  double interest;
+  double years;
+
+  std::cout << "Enter savings goal: ";
+  std::cin >> goal;
+
+  std::cout << "Enter current savings: ";
+  std::cin >> current;
+
+  std::cout << "Enter monthly contribution: ";
+  std:: cin >> contribution;
+
+  std::cout << "Enter annual interest rate: ";
+  std::cin >> interest;
+
+  years = log((((goal-current)/contribution)*(interest/12)+1))/(log(1+(interest/12)));
+
+  std::cout << "The savings goal of " << goal << " will be reached in " << years <<".";
+}
+
