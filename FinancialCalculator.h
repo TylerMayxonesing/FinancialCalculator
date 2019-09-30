@@ -12,12 +12,12 @@
 
 void prompt();
 
-int monthlyLoan();
+void monthlyLoan();
 
-int inflationCalculator();
+void inflationCalculator();
 
-int realInterestRate();
+void realInterestRate();
 
-int yearToSavingsGoal();
+void yearToSavingsGoal();
 
 #endif //FINANCIALCALCULATOR__FINANCIALCALCULATOR_H_
