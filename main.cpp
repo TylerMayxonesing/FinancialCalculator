@@ -7,7 +7,7 @@ int main() {
     std::cout << "Do you want to do another calculation [y/n]? ";
     std::cin >> answer;
   }
-  while (answer=="y" || answer == "Y");
+  while (answer== "y" || answer == "Y");
 
 
   return 0;

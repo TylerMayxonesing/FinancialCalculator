@@ -10,7 +10,7 @@ void prompt() {
     std::cout << "(M)onthly loan payment, (I)nflation calculator,\n(R)eal interest rate, (Y)ears to savings goal\nEnter what you want to calculate: ";
     std::cin >> input;
   }
-  while (tolower(input) != 'M' && tolower(input) != 'I' && tolower(input) != 'R' && tolower(input) != 'Y');
+  while (tolower(input) != 'm' && tolower(input) != 'i' && tolower(input) != 'r' && tolower(input) != 'y');
   if (tolower(input) == 'm'){
     monthlyLoan();
   }
@@ -64,7 +64,7 @@ void inflationCalculator() {
 
 
 
-  std::cout<<"Enter the amount of " << year << " dollars: ";
+  std::cout<<"Enter the amount of " << std::fixed << std::setprecision(0) << year << " dollars: ";
   std::cin >> amount;
 
   std::cout<<"Enter the ending year: ";
@@ -95,10 +95,10 @@ void realInterestRate() {
   std::cout << "The real interest rate is " << std::fixed << std::setprecision(2) << realInterest << "." << std::endl;
 }
 void yearToSavingsGoal() {
-  double goal;
-  double current;
-  double contribution;
-  double interest;
+  float goal;
+  float current;
+  float contribution;
+  float interest;
   double years;
 
   std::cout << "Enter savings goal: ";
@@ -114,13 +114,12 @@ void yearToSavingsGoal() {
   std::cin >> interest;
 
   if (interest !=0) {
-    years = log((interest / 12) * ((((goal - current) / contribution))) + 1) / (log(1 + (interest / 12)));
+    years = (log((goal + (contribution/(interest/12.0)))/(current + (contribution/(interest/12.0)))))/log(1.0+(interest/12.0));
   }
   if (interest == 0){
     years = (goal - current)/(contribution) ;
   }
-
-  std::cout << "The savings goal of $" << std::fixed << std::setprecision(2) << goal << " will be reached in " << years/12 <<" years." << std::endl;
+  std::cout << "The savings goal of $"  << std::fixed << std::setprecision(2) << goal << " will be reached in " << years/12.0 <<" years." << std::endl;
 }
 
 
