@@ -99,7 +99,7 @@ void yearToSavingsGoal() {
   float current;
   float contribution;
   float interest;
-  double years;
+  float years;
 
   std::cout << "Enter savings goal: ";
   std::cin >> goal;
@@ -114,12 +114,14 @@ void yearToSavingsGoal() {
   std::cin >> interest;
 
   if (interest !=0) {
-    years = (log((goal + (contribution/(interest/12.0)))/(current + (contribution/(interest/12.0)))))/log(1.0+(interest/12.0));
+    //years = (log((goal + (contribution/(interest/12.0)))/(current + (contribution/(interest/12.0)))))/log(1.0+(interest/12.0));
+    years = log((goal+(contribution*12./interest))/(current + (contribution*12./interest)))/log(1+interest);
+    //years = log((goal + (contribution/(interest/12.)) + contribution)/(current + (contribution/(interest/12.)+ contribution)))/log(1 + (interest/12.));
   }
   if (interest == 0){
     years = (goal - current)/(contribution) ;
   }
-  std::cout << "The savings goal of $"  << std::fixed << std::setprecision(2) << goal << " will be reached in " << years/12.0 <<" years." << std::endl;
+  std::cout << "The savings goal of $"   << goal << " will be reached in " << years/12. <<" years." << std::endl;
 }
 
 
